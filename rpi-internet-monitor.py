@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#Converted to Python3
+# !/usr/bin/env python
 
 import subprocess
 import sys
@@ -19,14 +20,14 @@ SITES = ["google.com", "comcast.com"]
 # print messages for debugging when indicator is set
 def debug_message(debug_indicator, output_message):
   if debug_indicator:
-    print output_message
+    print (output_message)
 
 # issue Linux ping command to determine internet connection status
 def ping(site):
   cmd = "/bin/ping -c 1 " + site
   try:
     output = subprocess.check_output(cmd, stderr=subprocess.STDOUT, shell=True)
-  except subprocess.CalledProcessError, e:
+  except subprocess.CalledProcessError as e:
     debug_message(debug, site + ": not reachable")
     return 0
   else:
@@ -95,7 +96,7 @@ if len(sys.argv) > 1:
   if sys.argv[1] == "-debug":
     debug = True
   else:
-    print "unknown option specified: " + sys.argv[1]
+    print ("unknown option specified: " + sys.argv[1])
     sys.exit(1)
 
 # setup the GPIO pins
